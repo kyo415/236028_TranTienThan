@@ -79,3 +79,27 @@ Sau khi triển khai, thực hiện kiểm tra:
 - Truy cập endpoint `/api/foods` để kiểm tra khả năng lấy danh sách món ăn từ cơ sở dữ liệu MongoDB Atlas.
 
 Kết quả kiểm tra: Health check hoạt động bình thường và API danh sách món ăn trả về dữ liệu.
+
+### 9. Kiểm tra tổng thể
+Kiểm tra tổng thể hệ thống
+1. Frontend trên Render
+Kiểm tra giao diện, tìm kiếm, thêm, xem chi tiết, sửa và xóa món ăn.
+Mở website
+2. Backend API trên Render
+Kiểm tra trạng thái hoạt động và dữ liệu JSON trả về.
+Health check
+API danh sách món ăn
+3. MongoDB Atlas
+Xác nhận dữ liệu được lưu thật trong database 236028_TranTienThan, collection foods.
+Kiểm thử CRUD trên website
+Xem danh sách
+Danh sách món ăn được tải từ API.
+Thêm món ăn
+Thêm một món mới và kiểm tra món đó xuất hiện.
+Tìm theo tên món ăn hoặc từ khóa phù hợp.
+Cập nhật
+Sửa tên hoặc giá và xác nhận dữ liệu mới được hiển thị.
+Xóa
+Xóa món kiểm thử và xác nhận món không còn trong danh sách.
+Kiểm tra MongoDB
+Xác nhận thao tác thêm, sửa, xóa đã được lưu trong Atlas.
