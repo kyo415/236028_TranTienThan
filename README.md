@@ -29,3 +29,13 @@ sẽ được cập nhật khi hoàn thiện từng thành phần.
 - Backend API: Chưa triển khai
 - Docker Hub Backend: Chưa cập nhật
 - Docker Hub Frontend: Chưa cập nhật
+
+## Cơ sở dữ liệu MongoDB Atlas
+
+- Database: 236028_TranTienThan
+- Collection: foods
+- Trường dữ liệu: foodId, name, category, cuisine,
+  ingredients, price, quantity, description, imageUrl
+- Dữ liệu mẫu: F001, F002, F003
+- Kết nối: cấu hình qua biến môi trường MONGODB_URI
+- Lưu ý: không lưu thông tin xác thực trong repository.
