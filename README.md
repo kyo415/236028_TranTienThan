@@ -1,41 +1,38 @@
 # Hệ thống quản lý món ăn
 
-## Thông tin sinh viên
-- MSSV: 236028
-- Họ tên: Trần Tiến Thân
+## 1. Thông tin sinh viên
+- **MSSV:** 236028
+- **Họ tên:** Trần Tiến Thân
 
-## Mô tả
-Ứng dụng quản lý món ăn gồm frontend React, backend Node.js/Express
-và cơ sở dữ liệu MongoDB Atlas.
+## 2. Mô tả
+Ứng dụng quản lý món ăn gồm frontend React, backend Node.js/Express và cơ sở dữ liệu MongoDB Atlas. Ứng dụng cung cấp API để truy vấn và quản lý dữ liệu món ăn.
 
-## Công nghệ
-- React
+## 3. Công nghệ
+- React, Vite
 - Node.js, Express
 - MongoDB Atlas
 - Git, GitHub
 - Docker, Docker Hub
 - Render
 
-## Cấu trúc dự án
-- frontend/: Giao diện React
-- backend/: Backend API
+## 4. Cấu trúc dự án
+- `frontend/`: Giao diện người dùng
+- `backend/`: Backend API
+- `backend/Dockerfile`: Cấu hình Docker cho backend
+- `frontend/Dockerfile`: Cấu hình Docker cho frontend
 
-## Cấu hình và chạy ứng dụng
-Hướng dẫn cài đặt, cấu hình biến môi trường và chạy ứng dụng
-sẽ được cập nhật khi hoàn thiện từng thành phần.
+## 5. Cơ sở dữ liệu MongoDB Atlas
+- **Database:** `236028_TranTienThan`
+- **Collection:** `foods`
+- **Các trường dữ liệu:** `foodId`, `name`, `category`, `cuisine`, `ingredients`, `price`, `quantity`, `description`, `imageUrl`
+- **Dữ liệu mẫu:** F001, F002, F003
+- **Kết nối:** Sử dụng biến môi trường `MONGODB_URI`.
+- **Bảo mật:** Không lưu thông tin xác thực trong repository.
 
-## Triển khai
-- Frontend: Chưa triển khai
-- Backend API: Chưa triển khai
-- Docker Hub Backend: Chưa cập nhật
-- Docker Hub Frontend: Chưa cập nhật
+### 6. Docker Hub
+- **Backend image:** `krma415/backend:latest`
+- **Frontend image:** `krma415/frontend:latest`
 
-## Cơ sở dữ liệu MongoDB Atlas
-
-- Database: 236028_TranTienThan
-- Collection: foods
-- Trường dữ liệu: foodId, name, category, cuisine,
-  ingredients, price, quantity, description, imageUrl
-- Dữ liệu mẫu: F001, F002, F003
-- Kết nối: cấu hình qua biến môi trường MONGODB_URI
-- Lưu ý: không lưu thông tin xác thực trong repository.
+Docker Hub:
+- Backend: https://hub.docker.com/r/krma415/backend
+- Frontend: https://hub.docker.com/r/krma415/frontend
