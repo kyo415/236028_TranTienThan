@@ -51,3 +51,31 @@ Liên kết Docker Hub:
 
 Frontend cung cấp giao diện người dùng để tương tác với hệ thống quản lý món ăn.
 
+## 8. Triển khai Backend trên Render
+
+### 8.1. Thông tin triển khai
+
+- **Nền tảng:** Render
+- **Backend API:** https://foods-backend-236028.onrender.com/
+- **Health check:** https://foods-backend-236028.onrender.com/health
+- **API danh sách món ăn:** https://foods-backend-236028.onrender.com/api/foods
+
+### 8.2. Cấu hình môi trường
+
+Backend sử dụng các biến môi trường để cấu hình ứng dụng và kết nối cơ sở dữ liệu:
+
+- `PORT`: Cổng chạy Backend.
+- `MONGODB_URI`: Chuỗi kết nối MongoDB Atlas.
+- `DB_NAME`: Tên cơ sở dữ liệu `236028_TranTienThan`.
+- `CLIENT_URL`: URL frontend được phép truy cập Backend API.
+
+Các biến môi trường được cấu hình trong môi trường triển khai trên Render. Không lưu thông tin xác thực hoặc chuỗi kết nối nhạy cảm trong mã nguồn công khai.
+
+### 8.3. Kiểm tra Backend
+
+Sau khi triển khai, thực hiện kiểm tra:
+
+- Truy cập endpoint `/health` để xác nhận Backend hoạt động.
+- Truy cập endpoint `/api/foods` để kiểm tra khả năng lấy danh sách món ăn từ cơ sở dữ liệu MongoDB Atlas.
+
+Kết quả kiểm tra: Health check hoạt động bình thường và API danh sách món ăn trả về dữ liệu.
