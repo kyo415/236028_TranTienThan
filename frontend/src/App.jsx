@@ -25,6 +25,7 @@ function App() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
+  const [selectedFood, setSelectedFood] = useState(null);
 
   async function loadFoods(keyword = search) {
     try {
@@ -190,7 +191,86 @@ function App() {
       {notice && <p className="message success">{notice}</p>}
       {error && <p className="message error">{error}</p>}
       {loading && <p className="message">Đang tải dữ liệu...</p>}
+            {selectedFood && (
+        <div
+          className="food-modal-backdrop"
+          onClick={() => setSelectedFood(null)}
+        >
+          <section
+            className="food-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="food-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="food-modal-header">
+              <div>
+                <p className="eyebrow">FOOD DETAILS</p>
+                <h2 id="food-modal-title">{selectedFood.name}</h2>
+                <p className="muted">Mã món: {selectedFood.foodId}</p>
+              </div>
 
+              <button
+                type="button"
+                className="secondary-button"
+                onClick={() => setSelectedFood(null)}
+              >
+                Đóng
+              </button>
+            </div>
+
+            {selectedFood.imageUrl && (
+              <img
+                className="food-modal-image"
+                src={selectedFood.imageUrl}
+                alt={selectedFood.name}
+                onError={(event) => {
+                  event.currentTarget.style.display = "none";
+                }}
+              />
+            )}
+
+            <div className="food-modal-details">
+              <div>
+                <span className="detail-label">Danh mục</span>
+                <strong>{selectedFood.category || "Chưa cập nhật"}</strong>
+              </div>
+
+              <div>
+                <span className="detail-label">Ẩm thực</span>
+                <strong>{selectedFood.cuisine || "Chưa cập nhật"}</strong>
+              </div>
+
+              <div>
+                <span className="detail-label">Giá bán</span>
+                <strong className="price">
+                  {formatPrice(selectedFood.price)}
+                </strong>
+              </div>
+
+              <div>
+                <span className="detail-label">Số lượng</span>
+                <strong>{selectedFood.quantity}</strong>
+              </div>
+            </div>
+
+            <div className="food-modal-section">
+              <h3>Nguyên liệu</h3>
+              <p>
+                {Array.isArray(selectedFood.ingredients) &&
+                selectedFood.ingredients.length > 0
+                  ? selectedFood.ingredients.join(", ")
+                  : "Chưa cập nhật"}
+              </p>
+            </div>
+
+            <div className="food-modal-section">
+              <h3>Mô tả</h3>
+              <p>{selectedFood.description || "Chưa có mô tả."}</p>
+            </div>
+          </section>
+        </div>
+      )}
       {showForm && (
         <section className="form-panel">
           <h2>{editingId ? "Cập nhật món ăn" : "Thêm món ăn mới"}</h2>
@@ -335,7 +415,19 @@ function App() {
       {!loading && foods.length > 0 && (
         <section className="food-grid">
           {foods.map((food) => (
-            <article className="food-card" key={food._id}>
+            <article
+                className="food-card clickable-food-card"
+                key={food._id}
+                role="button"
+                tabIndex={0}
+                onClick={() => setSelectedFood(food)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    setSelectedFood(food);
+                  }
+                }}
+              >
               <div className="food-card-header">
                 <span>{food.foodId}</span>
                 <span className="food-category">{food.category}</span>
@@ -371,14 +463,14 @@ function App() {
               <div className="card-actions">
                 <button
                   className="secondary-button"
-                  onClick={() => openEditForm(food)}
+                  onClick={(event) => {event.stopPropagation();openEditForm(food);}}
                 >
                   Sửa
                 </button>
 
                 <button
                   className="danger-button"
-                  onClick={() => handleDelete(food)}
+                  onClick={(event) => {event.stopPropagation();handleDelete(food);}}
                 >
                   Xóa
                 </button>
